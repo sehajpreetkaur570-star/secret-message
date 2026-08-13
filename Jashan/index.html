@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jashan's Treat 😋</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #d9e7ff);
+      overflow: hidden;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 430px;
+      padding: 35px 25px;
+      text-align: center;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .food {
+      font-size: 45px;
+      margin: 15px 0;
+    }
+
+    button {
+      border: none;
+      padding: 14px 24px;
+      margin: 10px;
+      border-radius: 30px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #yes {
+      background: #4caf50;
+      color: white;
+    }
+
+    #no {
+      background: #ff5c5c;
+      color: white;
+      position: relative;
+    }
+
+    #message {
+      display: none;
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="food">🍕 🍔 🍦</div>
+
+    <h1>Hey Jashan! 😄</h1>
+
+    <p>
+      I have a very important question for you...
+      <br><br>
+      <strong>Are you giving me a treat? 😋</strong>
+    </p>
+
+    <button id="yes" onclick="yesClicked()">YES! 🎉</button>
+    <button id="no" onmouseover="moveNo()" ontouchstart="moveNo()">NO 😭</button>
+
+    <div id="message">
+      YAYYY! 🎉😋<br>
+      Treat confirmed! 🍕🍔🍦
+      <br><br>
+      Thank you, Jashan! 😂
+    </div>
+  </div>
+
+  <script>
+    function yesClicked() {
+      document.getElementById("message").style.display = "block";
+      document.getElementById("yes").style.display = "none";
+      document.getElementById("no").style.display = "none";
+    }
+
+    function moveNo() {
+      const button = document.getElementById("no");
+
+      const maxX = window.innerWidth - button.offsetWidth - 20;
+      const maxY = window.innerHeight - button.offsetHeight - 20;
+
+      const x = Math.max(10, Math.random() * maxX);
+      const y = Math.max(10, Math.random() * maxY);
+
+      button.style.position = "fixed";
+      button.style.left = x + "px";
+      button.style.top = y + "px";
+    }
+  </script>
+
+</body>
+</html>
