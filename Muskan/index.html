@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Secret ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #35133b, #09000d 70%);
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .card {
+      width: 92%;
+      max-width: 430px;
+      text-align: center;
+      padding: 35px 25px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .heart {
+      font-size: 70px;
+      animation: beat 1.3s infinite;
+    }
+
+    @keyframes beat {
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    h1 {
+      font-size: 30px;
+      margin: 20px 0 12px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #eee;
+    }
+
+    button {
+      margin-top: 20px;
+      border: none;
+      border-radius: 30px;
+      padding: 15px 28px;
+      font-size: 17px;
+      font-weight: bold;
+      background: #ff4d88;
+      color: white;
+      cursor: pointer;
+    }
+
+    #message {
+      display: none;
+      margin-top: 25px;
+      animation: fade 1s ease;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .small {
+      font-size: 14px;
+      color: #bbb;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <div class="heart">❤️</div>
+
+    <h1>Hey... don't close this 👀</h1>
+
+    <p>
+      I have a tiny question for you...
+    </p>
+
+    <button onclick="reveal()">Tap only if you're curious 🤫</button>
+
+    <div id="message">
+
+      <p>
+        Okay... you actually opened it 😂
+      </p>
+
+      <h1>🎤 Nandini</h1>
+
+      <p>
