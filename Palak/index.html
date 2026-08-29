@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Palak's Surprise 🎁</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      overflow: hidden;
+    }
+
+    .box {
+      width: 90%;
+      max-width: 420px;
+      background: white;
+      padding: 35px 25px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+
+    .emoji {
+      font-size: 75px;
+      animation: bounce 1.5s infinite;
+    }
+
+    h1 {
+      margin: 15px 0 10px;
+      font-size: 30px;
+      color: #6a11cb;
+    }
+
+    p {
+      color: #555;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    button {
+      margin-top: 20px;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      background: #6a11cb;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #countdown {
+      display: none;
+      margin-top: 25px;
+    }
+
+    #number {
+      font-size: 70px;
+      font-weight: bold;
+      color: #ff4b7d;
+      margin-top: 15px;
+      animation: pulse 1s infinite;
+    }
+
+    #surprise {
+      display: none;
+      margin-top: 25px;
+      animation: appear 0.7s ease;
+    }
+
+    #surprise h2 {
+      color: #ff4b7d;
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -20px;
+      animation: fall 3s linear forwards;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.25);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <div class="emoji">🎁</div>
+
+    <h1>Palak, Congratulations! 🎉</h1>
+
+    <p>
+      You have officially won a surprise! 😱
+      <br><br>
+      Are you ready to reveal it?
+    </p>
+
+    <button id="startButton" onclick="startCountdown()">
+      🎁 Reveal My Surprise
+    </button>
+
+    <div id="countdown">
+
+      <p>
+        Surprise unlocking in...
+      </p>
+
+      <div id="number">5</div>
+
+    </div>
+
+    <div id="surprise">
+
+      <h2>😂 YOU GOT PRANKED!</h2>
+
+      <p>
+        Palak, there was no prize... 😭😂
+        <br><br>
+        But hey, you got a surprise! 🎉😎
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function startCountdown() {
+
+      // Hide the button
+      document.getElementById("startButton").style.display = "none";
+
+      // Show countdown
+      document.getElementById("countdown").style.display = "block";
+
+      let number = 5;
+
+      const countdownNumber = document.getElementById("number");
+
+      const timer = setInterval(function() {
+
+        number--;
+
+        if (number > 0) {
+
+          countdownNumber.textContent = number;
+
+        } else {
+
+          clearInterval(timer);
+
+          countdownNumber.textContent = "🎉";
+
+          setTimeout(function() {
+
+            document.getElementById("countdown").style.display = "none";
+
+            document.getElementById("surprise").style.display = "block";
+
+            createConfetti();
+
+          }, 700);
+
+        }
+
+      }, 1000);
+    }
+
+
+    function createConfetti() {
+
+      for (let i = 0; i < 100; i++) {
+
+        let confetti = document.createElement("div");
+
+        confetti.className = "confetti";
+
+        confetti.style.left = Math.random() * 100 + "vw";
+
+        confetti.style.background =
+          [
+            "#ff4b7d",
+            "#ffd166",
+            "#06d6a0",
+            "#118ab2",
+            "#8338ec"
+          ][Math.floor(Math.random() * 5)];
+
+        confetti.style.animationDuration =
+          (2 + Math.random() * 2) + "s";
+
+        confetti.style.transform =
+          "rotate(" + Math.random() * 360 + "deg)";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(function() {
+          confetti.remove();
+        }, 4000);
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
